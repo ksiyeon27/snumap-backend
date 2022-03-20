@@ -12,7 +12,6 @@ ENV PATH=${PYTHONUSERBASE}lib/python3.9/site-packages/bin:${PATH}
 
 WORKDIR /app
 
-ADD requirements.txt /app/requirements.txt
 ADD compose/django/start-dev.sh /start-dev.sh
 
 RUN chmod +x /*.sh

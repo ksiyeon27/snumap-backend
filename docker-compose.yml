@@ -43,7 +43,6 @@ services:
       - db
     command: /start-dev.sh
     volumes:
-#      - ./requirements.txt:/app/requirements.txt
       - ./snumap:/app
       - snumap_packages:/usr/local/lib/python3.9/site-packages/
     tty: true
