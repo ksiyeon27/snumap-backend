@@ -1,0 +1,18 @@
+FROM python:3.9.11
+MAINTAINER esc5221 <esc5221@gmail.com>
+
+# RUN \
+#     apt-get update &&\
+#     apt-get -y install \
+#         libpq-dev \
+#         python-dev
+ENV PYTHONUNBUFFERED=0
+ENV PYTHONUSERBASE=/usr/local/
+ENV PATH=${PYTHONUSERBASE}lib/python3.9/site-packages/bin:${PATH}
+
+WORKDIR /app
+
+ADD snumap/manage.py /app/
+ADD compose/django/start-dev.sh /start-dev.sh
+
+RUN chmod +x /*.sh
