@@ -6,20 +6,25 @@ volumes:
 
 services:
   db:
-    image: postgres:14.2-alpine
-    volumes:
-      - snumap_db_dev:/var/lib/postgresql/data
+    image: mysql:8.0.27
+    restart: always
+    command: --lower_case_table_names=1
     environment:
-      - POSTGRES_DB=snumapdb
-      - POSTGRES_USER=snumapdbuser
-      - POSTGRES_PASSWORD=secret1234
-      - POSTGRES_INITDB_ARGS=--encoding=UTF-8
+        - MYSQL_DATABASE=snumapdb
+        - MYSQL_USER=snumapdbuser
+        - MYSQL_PASSWORD=secret1234  
+        - MYSQL_ROOT_PASSWORD=secret1234  
+        - TZ=Asia/Seoul
+    command:
+        - --character-set-server=utf8mb4
+        - --collation-server=utf8mb4_unicode_ci
+    volumes:
+        - ./db:/var/lib/mysql
     ports:
-      - "5432:5432"
+      - 3306:3306
     healthcheck:
-      test: "pg_isready -h localhost -p 5432 -U postgres"
-      interval: 3s
-      timeout: 1s
+      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+      timeout: 20s
       retries: 10
 
   django:
@@ -29,7 +34,7 @@ services:
     environment:
       - DJANGO_DEBUG=True
       - DJANGO_DB_HOST=db
-      - DJANGO_DB_PORT=5432
+      - DJANGO_DB_PORT=3306
       - DJANGO_DB_NAME=snumapdb
       - DJANGO_DB_USERNAME=snumapdbuser
       - DJANGO_DB_PASSWORD=secret1234
