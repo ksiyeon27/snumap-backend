@@ -1,5 +1,6 @@
 Django==4.0.3
 django-debug-toolbar==3.2.4
 djangorestframework==3.13
-djangorestframework-jwt
+#djangorestframework-jwt : django4 지원x
+drf-jwt #https://www.inflearn.com/questions/482303
 django-rest-authtoken

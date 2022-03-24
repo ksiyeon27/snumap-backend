@@ -26,8 +26,6 @@ class UserCreateSerializer(serializers.Serializer):
     username = serializers.CharField(max_length=25, write_only=True)
     password = serializers.CharField(max_length=128, min_length=8, write_only=True)
     
-    is_superuser = serializers.BooleanField(required=False, default=False)
-    is_staff = serializers.BooleanField(required=False, default=False)
     #profile_image -> s3 설정 이후 추가/회원가입 시 추가 or 프로필 변경 시 추가
 
     def get_token(self, user):
@@ -44,12 +42,7 @@ class UserCreateSerializer(serializers.Serializer):
         return data
 
     def create(self, validated_data):
-        is_staff = validated_data.get("is_staff")
-        is_superuser = validated_data.get("is_superuser")
-        if is_staff == True and is_superuser == True:
-            user = User.objects.create_superuser(**validated_data)
-        else:
-            user = User.objects.create_user(**validated_data)
+        user = User.objects.create_user(**validated_data)
 
         return user
 
