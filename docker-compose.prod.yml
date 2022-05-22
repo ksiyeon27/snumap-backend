@@ -1,0 +1,38 @@
+version: '3'
+
+volumes:
+  snumap_db_dev: {}
+  snumap_packages: {}
+
+services:
+  django:
+    build:
+      context: .
+      dockerfile: ./compose/django/Dockerfile-prod
+    environment:
+      - DJANGO_DEBUG=False
+    ports:
+      - 8000:8000
+    expose : 
+     - "8000"
+    command: /start-prod.sh
+    volumes:
+      - ./snumap:/app
+      - ./static:/static
+      - snumap_packages:/usr/local/lib/python3.9/site-packages/
+    tty: true
+
+  nginx:
+    image: nginx:latest
+    ports:
+      - "80:80"
+    volumes: 
+      - ./snumap:/app
+      - ./static:/static
+      - ./compose/nginx:/etc/nginx/conf.d
+    depends_on:
+      - django
+    links:
+      - django:django
+
+#http://raccoonyy.github.io/docker-usages-for-dev-environment-setup/
