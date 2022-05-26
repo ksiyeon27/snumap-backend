@@ -1,0 +1,120 @@
+[
+    {
+        "model": "place.location",
+        "pk": 9,
+        "fields": {
+            "latitude": 37.4565095,
+            "longitude": 126.9500385
+        }
+    },
+    {
+        "model": "place.location",
+        "pk": 10,
+        "fields": {
+            "latitude": 37.45651,
+            "longitude": 126.95004
+        }
+    },
+    {
+        "model": "place.tag",
+        "pk": 9,
+        "fields": {
+            "name": "윗공대"
+        }
+    },
+    {
+        "model": "place.tag",
+        "pk": 10,
+        "fields": {
+            "name": "컴퓨터공학부"
+        }
+    },
+    {
+        "model": "place.tag",
+        "pk": 11,
+        "fields": {
+            "name": "와플스튜디오"
+        }
+    },
+    {
+        "model": "place.place",
+        "pk": 5,
+        "fields": {
+            "name": "제 1공학관",
+            "number": 301,
+            "category": 6,
+            "location": 9,
+            "type": 1,
+            "information": "제 1공학관입니다.",
+            "tags": [
+                9,
+                10,
+                11
+            ]
+        }
+    },
+    {
+        "model": "place.place",
+        "pk": 6,
+        "fields": {
+            "name": "제 2공학관",
+            "number": 301,
+            "category": 6,
+            "location": 10,
+            "type": 1,
+            "information": "제 2공학관입니다.",
+            "tags": [
+                9
+            ]
+        }
+    },
+    {
+        "model": "room.room",
+        "pk": 1,
+        "fields": {
+            "name": "컴퓨터공학부 과방",
+            "number": 317,
+            "type": 1,
+            "floor": 3,
+            "building": 6,
+            "information": "컴퓨터공학부 과방입니다. 와플스튜디오 동방이 있습니다.",
+            "tags": [
+                9,
+                10,
+                11
+            ]
+        }
+    },
+    {
+        "model": "room.room",
+        "pk": 2,
+        "fields": {
+            "name": "S-lab",
+            "number": 316,
+            "type": 1,
+            "floor": 3,
+            "building": 6,
+            "information": "S-lab입니다. 컴공 과방옆입니다.",
+            "tags": [
+                9,
+                10
+            ]
+        }
+    },
+    {
+        "model": "room.room",
+        "pk": 3,
+        "fields": {
+            "name": "전기정보공학부 과방",
+            "number": 207,
+            "type": 1,
+            "floor": 2,
+            "building": 6,
+            "information": "전기정보공학부 과방입니다.",
+            "tags": [
+                9,
+                10
+            ]
+        }
+    }
+]

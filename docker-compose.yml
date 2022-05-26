@@ -3,6 +3,7 @@ version: '3'
 volumes:
   snumap_db_dev: {}
   snumap_packages: {}
+  db-data: {}
 
 services:
   db:
@@ -19,7 +20,9 @@ services:
         - --character-set-server=utf8mb4
         - --collation-server=utf8mb4_unicode_ci
     volumes:
-        - ./db/mysql:/var/lib/mysql
+        #- ./db/mysql:/var/lib/mysql
+        - db-data:/var/log/mysql
+        - db-data:/var/lib/mysql
     ports:
       - 3306:3306
     healthcheck:
