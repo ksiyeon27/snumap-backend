@@ -2,6 +2,7 @@ Django==4.0.3
 mysqlclient==2.1.0
 django-debug-toolbar==3.2.4
 djangorestframework==3.13
+django-extensions==3.1.5
 #djangorestframework-jwt : django4 지원x
 drf-jwt #https://www.inflearn.com/questions/482303
 django-rest-authtoken
