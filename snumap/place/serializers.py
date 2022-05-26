@@ -1,6 +1,6 @@
 from unittest.util import _MAX_LENGTH
 from rest_framework import serializers
-from place.models import Location, Place
+from place.models import Location, Place, Tag
 
 
 class LocationSerializer(serializers.ModelSerializer):
@@ -17,19 +17,20 @@ class LocationSerializer(serializers.ModelSerializer):
 
 class TagSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Location
+        model = Tag
         fields = (
             'id',
             'name'
         )
     def validate(self, data):
+
         return data
         
 class PlaceSerializer(serializers.ModelSerializer):
     name = serializers.CharField(max_length=20)
     number = serializers.IntegerField()
-    # category = serializers.IntegerField()
-    # type = serializers.IntegerField()
+    category = serializers.IntegerField()
+    type = serializers.IntegerField()
     information = serializers.CharField(max_length=500, allow_null=True)
     location = LocationSerializer(read_only=True)
     tags = TagSerializer(many=True)
@@ -48,9 +49,6 @@ class PlaceSerializer(serializers.ModelSerializer):
         )
 
     def validate(self, data):
-        data['category'] = self.instance.get_category_display()
-        data['type'] = self.instance.get_type_display()
-        
         return data
 
 

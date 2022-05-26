@@ -3,11 +3,23 @@ from place.models import Place
 from room.models import Room
 from place.serializers import TagSerializer, PlaceInRoomSerializer
 
+class RoomInPlaceSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Room
+        fields = (
+            'id',
+            'name',
+            'number',
+            'type'
+        )
+
+    def validate(self, data):
+        return data
 
 class RoomSerializer(serializers.ModelSerializer):
     name = serializers.CharField(max_length=100)
     number = serializers.IntegerField()
-    # type = serializers.IntegerField()
+    type = serializers.IntegerField()
     floor = serializers.IntegerField()
     building = PlaceInRoomSerializer()
     information = serializers.CharField(max_length=500, allow_null=True)
@@ -27,6 +39,4 @@ class RoomSerializer(serializers.ModelSerializer):
         )
 
     def validate(self, data):
-        data['type'] = self.instance.get_type_display()
-        
         return data
