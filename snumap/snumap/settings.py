@@ -33,7 +33,7 @@ SECRET_KEY = get_secret("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DJANGO_DEBUG') == 'True'
 
-ALLOWED_HOSTS = ["localhost", "django"]
+ALLOWED_HOSTS = ["localhost", "django", "0.0.0.0"]
 
 
 # Application definition
