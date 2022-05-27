@@ -12,7 +12,6 @@ class LocationSerializer(serializers.ModelSerializer):
             'longitude'
         )
     def validate(self, data):
-        
         return data
 
 class TagSerializer(serializers.ModelSerializer):
@@ -23,7 +22,6 @@ class TagSerializer(serializers.ModelSerializer):
             'name'
         )
     def validate(self, data):
-
         return data
         
 class PlaceSerializer(serializers.ModelSerializer):
