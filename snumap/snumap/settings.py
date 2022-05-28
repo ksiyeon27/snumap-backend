@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'user.apps.UserConfig',
     'place.apps.PlaceConfig',
     'room.apps.RoomConfig',
+    'search.apps.SearchConfig',
 
     #login
     'rest_framework',

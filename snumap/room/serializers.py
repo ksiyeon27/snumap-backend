@@ -40,3 +40,17 @@ class RoomSerializer(serializers.ModelSerializer):
 
     def validate(self, data):
         return data
+    
+class RoomSearchSerializer(serializers.ModelSerializer):
+    modelType = serializers.SerializerMethodField(read_only=True)
+    
+    class Meta:
+        model = Room
+        fields = (
+            'id',
+            'name',
+            'modelType'
+        )
+        
+    def get_modelType(self, room):
+        return "room"

@@ -1,3 +1,9 @@
 from django.test import TestCase
+from rest_framework import status
+from factory.django import DjangoModelFactory
 
-# Create your tests here.
+from .models import Room
+
+class RoomFactory(DjangoModelFactory):
+    class Meta:
+        model = Room

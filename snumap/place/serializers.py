@@ -63,3 +63,18 @@ class PlaceInRoomSerializer(serializers.ModelSerializer):
             'number',
             'location'
         )
+        
+class PlaceSearchSerializer(serializers.ModelSerializer):
+    modelType = serializers.SerializerMethodField(read_only=True)
+    
+    class Meta:
+        model = Place
+        fields = (
+            'id',
+            'name',
+            'modelType',
+        )
+        
+    def get_modelType(self, place):
+        return "place"
+        

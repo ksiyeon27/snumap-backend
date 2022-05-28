@@ -7,3 +7,4 @@ django-extensions==3.1.5
 drf-jwt #https://www.inflearn.com/questions/482303
 django-rest-authtoken
 docker-compose==1.29.2 
+factory-boy
