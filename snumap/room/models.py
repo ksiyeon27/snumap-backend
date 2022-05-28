@@ -5,7 +5,7 @@ from place.models import Place, Tag
 # Create your models here.
 class Room(models.Model):
 
-    class ROOM_TYPE(models.TextChoices):
+    class ROOM_TYPE(models.IntegerChoices):
         ETC = 0, 'etc'
         CLS = 1, 'Classroom'
         RES = 2, 'Restaurant'

@@ -11,17 +11,17 @@ class Tag(models.Model):
 class Place(models.Model):
 
     # https://docs.djangoproject.com/en/3.0/ref/models/fields/#enumeration-types
-    class PLACE_CATEGORY(models.TextChoices):
-        ETC = 0, '시설(etc)'
-        HUM = 1, '인문대학'
-        EDU = 2, '사범대학'
-        CSS = 3, '사회과학대학'
-        SCI = 4, '자연과학대학'
-        PHA = 5, '약학대학'
-        ENG = 6, '공과대학'
-        ART = 7, '미술대학 및 음악대학'
-        CBA = 8, '경영대학'
-        VET = 9, '수의과대학'
+    class PLACE_CATEGORY(models.IntegerChoices):
+        ETC = 0,  '시설(etc)'
+        HUM = 1,  '인문대학'
+        EDU = 2,  '사범대학'
+        CSS = 3,  '사회과학대학'
+        SCI = 4,  '자연과학대학'
+        PHA = 5,  '약학대학'
+        ENG = 6,  '공과대학'
+        ART = 7,  '미술대학 및 음악대학'
+        CBA = 8,  '경영대학'
+        VET = 9,  '수의과대학'
         CHE = 10, '생활과학대학'
         CAL = 11, '농업생명과학대학'
         CLS = 12, '자유전공학부'
@@ -32,7 +32,7 @@ class Place(models.Model):
         LAW = 17, '법학전문대학원'
         DAT = 18, '데이터사이언스대학원'
 
-    class PLACE_TYPE(models.TextChoices):
+    class PLACE_TYPE(models.IntegerChoices):
         ETC = 0, 'etc'
         BLD = 1, 'building'
         ATM = 2, 'atm'
